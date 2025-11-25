@@ -41,6 +41,7 @@
                 <div class="step-card" data-step="2">
                     <div class="subSecondCard" style="margin-top: 16px;">
                         <!-- WRAPPER DO VÍDEO DE DRUM ROLL -->
+                         <p>let's see who your chungee is!!!!</p>
                         <div id="drumVideoWrapper" class="drum-video-wrapper">
                             <div id="drumVideo"></div>
                         </div>
@@ -61,7 +62,14 @@
                     <h2>But first, let's hear from our AI Christmas sponsor Story</h2>
                     <p id="storyText" class="story-text">[story]</p>
                     <div class="story-image-wrapper" style="text-align:center; margin-top:16px;">
-                        <img id="storyImage" class="story-image" src="" alt="Story Image" style="max-width:100%; border-radius:12px; box-shadow:0 2px 12px #ccc;">
+                        <div class="story-image-frame" style="display:inline-block; position:relative;">
+                            <img id="storyImage" class="story-image" src="" alt="Story Image" style="max-width:100%; border-radius:12px; box-shadow:0 2px 12px #ccc; display:block;">
+
+                            <!-- Overlay with blur + reveal button -->
+                            <div id="storyImageOverlay" class="story-image-overlay">
+                                <button id="revealStoryImageButton" class="reveal-story-btn">REVEAL STORY IMAGE</button>
+                            </div>
+                        </div>
                     </div>
                     <div class="buttons-row" style="margin-top: 20px;">
                         <button data-next-step="4">Ok, show me my chungee</button>

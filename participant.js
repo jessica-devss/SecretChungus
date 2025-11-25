@@ -1,7 +1,7 @@
 // participant.js
 
 // quantas vezes repetimos a lista de participantes em cada rolo
-const SLOT_LOOPS = 8;
+const SLOT_LOOPS = 16;
 
 // controle de step atual
 let currentStep = 1;
@@ -251,11 +251,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Step 3: história de NATAL do PRÓPRIO participante (giver)
   if (storyTextEl) {
-    storyTextEl.innerHTML = withBreaks(giver.story || "");
+    // Use a scroll-reveal that shows the story line-by-line as the user scrolls.
+    // We keep the original text and split by newline so we control each "line" element.
+    const rawStory = giver.story || "";
+    setupScrollReveal(storyTextEl, rawStory);
   }
   if (storyImageEl && giver.storyImage) {
     storyImageEl.src = giver.storyImage;
     storyImageEl.alt = giver.name + " story image";
+
+    // Story image overlay (blur + reveal button)
+    const storyImageOverlay = document.getElementById('storyImageOverlay');
+    const revealStoryImageButton = document.getElementById('revealStoryImageButton');
+
+    // Ensure overlay is visible when image is present
+    if (storyImageOverlay) {
+      storyImageOverlay.classList.remove('hidden');
+    }
+
+    // If image loads, keep overlay visible until user reveals
+    storyImageEl.addEventListener('load', () => {
+      if (storyImageOverlay) storyImageOverlay.classList.remove('hidden');
+    });
+
+    // Click to reveal: hide overlay (remove blur) and make button non-interactive
+    if (revealStoryImageButton && storyImageOverlay) {
+      revealStoryImageButton.addEventListener('click', (ev) => {
+        ev.stopPropagation();
+        storyImageOverlay.classList.add('hidden');
+      });
+    }
   }
 
   // Step 4: dados de quem ele tirou (receiver)
@@ -385,6 +410,47 @@ function setupSlotReels() {
       });
     }
   });
+}
+
+// Splits text by line breaks and sets up IntersectionObserver to reveal lines
+function setupScrollReveal(containerEl, rawText) {
+  // Clear existing content
+  containerEl.innerHTML = "";
+
+  // Split on CRLF or LF
+  const lines = rawText.split(/\r?\n/);
+
+  lines.forEach((line, idx) => {
+    const span = document.createElement('span');
+    span.className = 'reveal-line';
+
+    if (line.trim() === '') {
+      span.classList.add('empty-line');
+      span.innerHTML = '&nbsp;';
+    } else {
+      // Use textContent to avoid accidental HTML injection
+      span.textContent = line;
+    }
+
+    containerEl.appendChild(span);
+  });
+
+  // Create observer to reveal when a line enters viewport
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, {
+    root: null,
+    rootMargin: '0px 0px -10% 0px',
+    threshold: 0.05,
+  });
+
+  const toObserve = containerEl.querySelectorAll('.reveal-line');
+  toObserve.forEach((el) => observer.observe(el));
 }
 
 function startSlotMachine(receiverId) {

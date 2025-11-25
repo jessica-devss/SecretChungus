@@ -186,6 +186,63 @@ button img {
   white-space: pre-line;
 }
 
+/* Scroll reveal for story lines: each line fades/slides in when scrolled into view */
+.story-text .reveal-line {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.55s cubic-bezier(.2,.8,.2,1), transform 0.55s cubic-bezier(.2,.8,.2,1);
+  display: block;
+  margin-bottom: 0.6rem;
+  color: #2b2b2b;
+  font-size: 18px;
+  line-height: 1.45;
+}
+.story-text .reveal-line.visible {
+  opacity: 1;
+  transform: none;
+}
+
+.story-text .reveal-line.empty-line {
+  height: 0.5rem;
+}
+
+/* Story image overlay + reveal button */
+.story-image-frame {
+  position: relative; /* ensure overlay positions correctly */
+}
+.story-image-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: opacity 0.28s ease, visibility 0.28s ease;
+  opacity: 1;
+  visibility: visible;
+}
+.story-image-overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.reveal-story-btn {
+  background: rgba(0,0,0,0.7);
+  color: #fff;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 999px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+}
+.reveal-story-btn:hover { filter: brightness(1.05); }
+
 /* FAVORITE CHUNGUS */
 .favorite-chungus-box {
   margin-top: 12px;
@@ -486,7 +543,7 @@ button img {
   animation-timing-function: linear;
   transform-origin: bottom center;
   animation-name: simpleEntrance;
-  animation-duration: 10s; /* igual ao Woah.css */
+  animation-duration: 7s; /* igual ao Woah.css */
 }
 
 
