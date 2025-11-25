@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secret Chungus – Admin</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div>
+    <div>
+      <img class="chungusBanner" src="./images/SecretChungusBanner.png" alt="SECRET CHUNGUS">
+    </div>
+
+    <section class="mainSection">
+      <div class="cardSection">
+        <h1>Secret Chungus – Admin</h1>
+
+        <p>Essa página é só para você fazer o sorteio e gerar os links de cada participante.</p>
+        <p>Depois de sortear, copie o link correspondente e envie para cada pessoa.</p>
+
+        <button id="btn-sortear" style="margin-top: 16px;">Sortear agora</button>
+
+        <table class="table-links">
+          <thead>
+            <tr>
+              <th>Participante</th>
+              <th>Link para enviar</th>
+            </tr>
+          </thead>
+          <tbody id="links-body">
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

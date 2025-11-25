@@ -1,0 +1,851 @@
+/* RESET */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* GERAL */
+body {
+  font-family: "Work Sans", sans-serif;
+  background-color: #12010a;
+  color: #333333;
+}
+
+/* BANNER */
+.chungusBanner {
+	max-width: 1920px;
+	width: 100%;
+	display: block;
+}
+
+/* SEÇÃO PRINCIPAL */
+.mainSection {
+	background-image: url(./images/bg-pattern.png);
+	margin-top: -5px;
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+  padding: 40px 16px 80px;
+}
+
+/* CARD PRINCIPAL */
+.cardSection {
+	margin-top: 20px;
+	max-width: 700px;
+	width: 100%;
+	background-color: rgb(243, 240, 240);
+	padding: 30px 40px;
+	border-radius: 16px;
+	font-weight: 500;
+	box-shadow: rgba(43, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+
+.cardSection h1 {
+	font-size: 36px;
+	font-family: "Berkshire Swash", serif;
+	color: #333333;
+	text-align: center;
+	margin-bottom: 16px;
+}
+
+.cardSection h2 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.cardSection p {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+/* ALINHAMENTO GERAL */
+.cardSection > div,
+.cardSection > section,
+.cardSection > article {
+	text-align: center;
+}
+
+/* CARDS DE STEP COM TRANSIÇÃO */
+.step-card {
+  margin-top: 20px;
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.4s ease, transform 0.4s ease, max-height 0.4s ease;
+}
+
+.step-card.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  max-height: 3000px; /* suficiente pra qualquer card */
+}
+
+
+.youImage{
+	margin: 30px 0;
+	max-width: 700px;
+}
+
+.step-card p{
+	margin-top: 50px;
+	font-size: 22px;
+}
+#wishMessage {
+	margin: 0;
+}
+
+/* BOTÕES */
+button {
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: none;
+  background: #b0183c;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: "Work Sans", sans-serif;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+button:hover {
+  filter: brightness(1.1);
+}
+
+button img {
+	width: 32px;
+	height: 32px;
+	border-radius: 6px;
+}
+.buttons-row {
+  margin-top: 26px;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* MENSAGEM BOX */
+.messageBoxContainer {
+  margin: 16px auto;
+  padding: 16px 20px;
+  border-radius: 12px;
+  border: 2px dashed #b0183c;
+  background-color: #fff4f7;
+  text-align: left;
+}
+
+/* STORY */
+.story-text {
+  text-align: left;
+  margin-top: 10px;
+  white-space: pre-line;
+}
+
+/* FAVORITE CHUNGUS */
+.favorite-chungus-box {
+  margin-top: 12px;
+  padding: 10px;
+  border-radius: 12px;
+  background-color: #f5f5f5;
+}
+
+/* TABELA ADMIN */
+.table-links {
+  width: 100%;
+  border: 1px solid #ddd;
+  margin-top: 20px;
+}
+
+.table-links th,
+.table-links td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  font-size: 14px;
+}
+
+.table-links input {
+  width: 100%;
+  padding: 6px;
+  font-size: 12px;
+}.hidden {
+  display: none;
+}
+
+/* SLOT MACHINE */
+.slot-wrapper {
+  margin: 20px auto 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.slots {
+  position: relative;
+  width: 260px;
+  height: 240px; /* 3 imagens de 80px */
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background: linear-gradient(45deg, grey 0%, lightgray 100%);
+  border-top: 1px solid rgba(255, 255, 255, 0.6);
+  border-right: 1px solid rgba(255, 255, 255, 0.6);
+  border-left: 1px solid rgba(0, 0, 0, 0.4);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  box-shadow: -2px 2px 3px rgba(0, 0, 0, 0.3);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.slots::before,
+.slots::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 10px;
+  height: 2px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.slots::before {
+  left: 0;
+  transform: translate(-200%, -50%);
+}
+
+.slots::after {
+  right: 0;
+  transform: translate(200%, -50%);
+}
+
+.reel {
+  position: relative;
+  width: 80px;
+  height: 240px; /* exatamente 3 cards */
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 3px;
+  overflow: hidden;
+  background-color: #111;
+}
+
+.reel-inner {
+  display: flex;
+  flex-direction: column;
+  transform: translateY(0);
+}
+
+.slot-face {
+  width: 100%;
+  height: 80px;      /* 3 cabem certinho */
+  object-fit: cover;
+}
+
+/* gradiente nas bordas, tipo slot real */
+.reel::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(
+    rgba(0, 0, 0, 0.4) 0%,
+    transparent 30%,
+    transparent 70%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+  box-shadow: inset 0 0 6px 2px rgba(0, 0, 0, 0.3);
+}
+
+.slot-caption {
+  margin-top: 10px;
+  font-size: 0.8rem;
+  color: #555;
+}
+
+.slot-reveal {
+  margin-top: 24px;
+}
+
+
+
+
+.fire, .burn {
+  color: #000;
+  font-family: 'Caesar Dressing', cursive;
+  font-size: 26px;
+  text-transform: lowercase;
+  vertical-align: middle;
+  letter-spacing: .2em;
+}
+
+.fire {
+  animation: animation 1s ease-in-out infinite alternate;
+  -moz-animation: animation 1s ease-in-out infinite alternate;
+  -webkit-animation: animation 1s ease-in-out infinite alternate;
+  -o-animation: animation 1s ease-in-out infinite alternate;
+}
+
+.burn {
+  animation: animation .65s ease-in-out infinite alternate;
+  -moz-animation: animation .65s ease-in-out infinite alternate;
+  -webkit-animation: animation .65s ease-in-out infinite alternate;
+  -o-animation: animation .65s ease-in-out infinite alternate;
+}
+
+@keyframes animation
+{
+0% {text-shadow: 0 0 12px #fefcc9,
+  0px 10px 16px #feec85,
+  0px -14px 22px #ffae34,
+  0px -22px 32px #ec760c,
+  0px -30px 40px #cd4606,
+  8px -18px 24px #ffae34,
+  -8px -18px 24px #ec760c,
+  8px 0px 16px #ec760c,
+  -8px 0px 16px #cd4606,
+  6px 12px 18px #973716,
+  -6px 12px 18px #451b0e;}
+100% {text-shadow: 0 0 12px #fefcc9,
+  0px 10px 16px #fefcc9,
+  0px -14px 22px #feec85,
+  0px -22px 32px #ffae34,
+  0px -30px 40px #ec760c,
+  8px -18px 24px #ffae34,
+  -8px -18px 24px #ec760c,
+  8px 0px 16px #ffae34,
+  -8px 0px 16px #ec760c,
+  6px 14px 20px #cd4606,
+  -6px 14px 20px  #973716;}
+}
+
+@-moz-keyframes animation
+{
+0% {text-shadow: 0 0 12px #fefcc9,
+  0px 10px 16px #feec85,
+  0px -14px 22px #ffae34,
+  0px -22px 32px #ec760c,
+  0px -30px 40px #cd4606,
+  8px -18px 24px #ffae34,
+  -8px -18px 24px #ec760c,
+  8px 0px 16px #ec760c,
+  -8px 0px 16px #cd4606,
+  6px 12px 18px #973716,
+  -6px 12px 18px #451b0e;}
+100% {text-shadow: 0 0 12px #fefcc9,
+  0px 10px 16px #fefcc9,
+  0px -14px 22px #feec85,
+  0px -22px 32px #ffae34,
+  0px -30px 40px #ec760c,
+  8px -18px 24px #ffae34,
+  -8px -18px 24px #ec760c,
+  8px 0px 16px #ffae34,
+  -8px 0px 16px #ec760c,
+  6px 14px 20px #cd4606,
+  -6px 14px 20px  #973716;}
+}
+
+@-webkit-keyframes animation
+{
+0% {text-shadow: 0 0 12px #fefcc9,
+  0px 10px 16px #feec85,
+  0px -14px 22px #ffae34,
+  0px -22px 32px #ec760c,
+  0px -30px 40px #cd4606,
+  8px -18px 24px #ffae34,
+  -8px -18px 24px #ec760c,
+  8px 0px 16px #ec760c,
+  -8px 0px 16px #cd4606,
+  6px 12px 18px #973716,
+  -6px 12px 18px #451b0e;}
+100% {text-shadow: 0 0 12px #fefcc9,
+  0px 10px 16px #fefcc9,
+  0px -14px 22px #feec85,
+  0px -22px 32px #ffae34,
+  0px -30px 40px #ec760c,
+  8px -18px 24px #ffae34,
+  -8px -18px 24px #ec760c,
+  8px 0px 16px #ffae34,
+  -8px 0px 16px #ec760c,
+  6px 14px 20px #cd4606,
+  -6px 14px 20px  #973716;}
+}
+
+@-o-keyframes animation
+{
+0% {text-shadow: 0 0 12px #fefcc9,
+  0px 10px 16px #feec85,
+  0px -14px 22px #ffae34,
+  0px -22px 32px #ec760c,
+  0px -30px 40px #cd4606,
+  8px -18px 24px #ffae34,
+  -8px -18px 24px #ec760c,
+  8px 0px 16px #ec760c,
+  -8px 0px 16px #cd4606,
+  6px 12px 18px #973716,
+  -6px 12px 18px #451b0e;}
+100% {text-shadow: 0 0 12px #fefcc9,
+  0px 10px 16px #fefcc9,
+  0px -14px 22px #feec85,
+  0px -22px 32px #ffae34,
+  0px -30px 40px #ec760c,
+  8px -18px 24px #ffae34,
+  -8px -18px 24px #ec760c,
+  8px 0px 16px #ffae34,
+  -8px 0px 16px #ec760c,
+  6px 14px 20px #cd4606,
+  -6px 14px 20px  #973716;}
+}
+
+
+/* -------- Woah.css base + simpleEntrance -------- */
+.woah {
+  animation-fill-mode: both;
+}
+
+.woah.infinite {
+  animation-iteration-count: infinite;
+}
+
+/* simpleEntrance ORIGINAL do Woah.css */
+@keyframes simpleEntrance {
+
+  0% {
+    opacity: 0%;
+    transform: translate3d(-2000px,500px,0) scale(10);
+  }
+
+  1% {
+    opacity: 100%
+  }
+
+  40% {
+    transform: translate3d(2000px,0px,0) scale(5);
+  }
+  50% {
+    transform: translate3d(-2000px,-100px,0) scale(3);
+  }
+  60% {
+    transform: translate3d(2000px,100px,0) scale(2);
+  }
+  70% {
+    transform: translate3d(-2000px,400px,0) scale(.1);
+  }
+
+  75% {
+    transform: translate3d(0px,0px,0) scale(.1);
+  }
+
+  80% {
+    transform:  rotate(360deg) translateX(150px) rotate(-360deg)
+  }
+
+}
+
+.simpleEntrance {
+  animation-timing-function: linear;
+  transform-origin: bottom center;
+  animation-name: simpleEntrance;
+  animation-duration: 10s; /* igual ao Woah.css */
+}
+
+
+/* -------- overlay do jumpscare -------- */
+.morbius-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* garante que hidden ganha do display:flex acima */
+.morbius-overlay.hidden {
+  display: none !important;
+}
+
+.morbius-inner {
+  position: relative;
+  max-width: 700px;
+  width: 95vw;
+  max-height: 95vh;
+}
+
+.morbius-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.morbius-text {
+  position: absolute;
+  bottom: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-family: "Comic Sans MS", "Comic Neue", system-ui, sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 0 8px #000, 0 0 16px #000;
+  letter-spacing: 2px;
+}
+/* -------- POPUP "ok ill trust you for now" -------- */
+.trust-popup-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.85);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 9500;
+}
+
+.trust-popup-overlay.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.trust-popup {
+  background: #ffffff;
+  padding: 24px 32px;
+  border-radius: 16px;
+  text-align: center;
+  max-width: 420px;
+  width: 90vw;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+  transform: scale(0.9);
+  transition: transform 0.4s ease;
+}
+
+.trust-popup-overlay.visible .trust-popup {
+  transform: scale(1);
+}
+
+.trust-popup p {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.trust-popup img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  display: block;
+  margin: 0 auto;
+}
+.chungee-photo-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  opacity: 0;
+  transform: scale(0.9) translateY(10px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.chungee-avatar {
+  width: 200px;
+  height: 200px;
+  border-radius: 16px;
+  object-fit: cover;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* balão por cima, no topo da foto */
+.chungee-balloon {
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+}
+
+/* quando a revelação estiver ativa, mostra a foto com animação */
+.slot-reveal.show-photo .chungee-photo-wrapper {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+#confetti-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 3000; /* abaixo do morbius-overlay (9999) e acima do conteúdo normal */
+}
+
+/* Caixa de texto natalina com animação */
+.celebration-box {
+  margin-top: 16px;
+  padding: 16px 20px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #ffeef5 0%, #fff8e0 40%, #ffffff 100%);
+  border: 2px solid #b0183c;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.celebration-text p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #5b0520;
+  text-align: left;
+}
+
+/* garante que o SVG não quebre o layout */
+.celebration-svg {
+  flex-shrink: 0;
+  width: 90px;
+}
+
+.celebration-svg svg {
+  max-height: 80px;
+  overflow: visible;
+}
+
+/* animação das estrelinhas (scope só aqui) */
+.celebration-svg path {
+  fill: #379157;
+  stroke: #379157;
+  stroke-width: .2;
+  transform: scale(0);
+  transform-origin: 50% 50%;
+  transform-box: fill-box;
+  animation: star 8s ease-in-out infinite;
+  animation-delay: calc(var(--no) * 0.025s);
+}
+
+@keyframes star {
+  0% {
+    transform: scale(0);
+    animation-timing-function: cubic-bezier(.74,1.72,.57,1.01);
+  }
+  10% {
+    transform: scale(1);
+  }
+  65% {
+    transform: translateY(0px) scale(1);
+  }
+  75% {
+    transform: translateY(50px) scale(0);
+  }
+  100% {
+    transform: translateY(0px) scale(0);
+  }
+}
+
+/* responsivo: empilha em telas menores */
+@media (max-width: 600px) {
+  .celebration-box {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .celebration-svg svg {
+    max-height: 60px;
+  }
+}
+
+
+.amazingsec img{
+	max-width: 65px;
+}
+
+.amazingsec {
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.amazingsec img {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+}
+#favoriteChungus {
+	margin: 0;
+}
+/* texto com gradiente animado */
+.amazing-text {
+  margin: 0;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: 3px;
+  text-align: center;
+  text-transform: uppercase; 
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  background-size: 400%;
+  background-image: linear-gradient(
+    68.7deg,
+    rgba(29,173,235,1) 13.2%,
+    rgba(137,149,250,1) 29.8%,
+    rgba(229,109,212,1) 48.9%,
+    rgba(255,68,128,1) 68.2%,
+    rgba(255,94,0,1) 86.4%
+  );
+  animation: amazingMove 5s ease infinite;
+}
+
+@keyframes amazingMove {
+  0%, 100% {
+    background-position: 200% 0%;
+  }
+  50% {
+    background-position: 0% 200%;
+  }
+}
+
+/* SNOW EFFECT */
+.snowflake {
+  position: fixed;
+  top: -10px;
+  color: #fff;
+  font-size: 10px;
+  opacity: 0.7;
+  animation: snow-fall linear infinite;
+  pointer-events: none;
+  z-index: 9999; /* fica por cima mas sem bloquear clique */
+}
+
+@keyframes snow-fall {
+  to {
+    transform: translateY(100vh);
+  }
+}
+
+/* POPUP DO BANNER (3 CLICKS) */
+.banner-popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9600;
+}
+
+.banner-popup-overlay.hidden {
+  display: none !important;
+}
+
+.banner-popup {
+  position: relative;
+  background: #ffffff;
+  padding: 16px;
+  border-radius: 18px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.8);
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner-popup img {
+  max-width: 100%;
+  max-height: 80vh;
+  display: block;
+}
+
+.banner-popup-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: #b0183c;
+  color: #fff;
+  font-weight: 700;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner-popup-close:hover {
+  filter: brightness(1.1);
+}
+.drum-video-wrapper {
+  max-width: 560px;
+  margin: 0 auto;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+.drum-video-wrapper iframe {
+  display: block;
+  width: 100%;
+  height: 315px;
+}
+/* garante que o vídeo nunca apareça enquanto o card 2 não estiver ativo */
+.step-card[data-step="2"] .drum-video-wrapper {
+  display: none;
+}
+
+.step-card[data-step="2"].active .drum-video-wrapper {
+  display: block;
+}
