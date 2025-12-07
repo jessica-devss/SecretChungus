@@ -1,0 +1,233 @@
+/* MODALS & OVERLAYS */
+
+/* Trust Popup */
+.trust-popup-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.85);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-slow);
+  z-index: var(--z-modal);
+}
+
+.trust-popup-overlay.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.trust-popup {
+  background: var(--color-white);
+  padding: var(--spacing-xl) var(--spacing-2xl);
+  border-radius: var(--radius-xl);
+  text-align: center;
+  max-width: 420px;
+  width: 90vw;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+  transform: scale(0.9);
+  transition: transform var(--transition-slow);
+}
+
+.trust-popup-overlay.visible .trust-popup {
+  transform: scale(1);
+}
+
+.trust-popup p {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: var(--spacing-md);
+}
+
+.trust-popup img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  display: block;
+  margin: 0 auto;
+}
+
+/* Morbius Overlay (Jumpscare) */
+.morbius-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-morbius);
+}
+
+.morbius-overlay.hidden {
+  display: none !important;
+}
+
+.morbius-inner {
+  position: relative;
+  max-width: 700px;
+  width: 95vw;
+  max-height: 95vh;
+}
+
+.morbius-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.morbius-text {
+  position: absolute;
+  bottom: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-family: "Comic Sans MS", "Comic Neue", system-ui, sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--color-white);
+  text-shadow: 0 0 8px #000, 0 0 16px #000;
+  letter-spacing: 2px;
+}
+
+/* Banner Popup */
+.banner-popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-banner-popup);
+}
+
+.banner-popup-overlay.hidden {
+  display: none !important;
+}
+
+.banner-popup {
+  position: relative;
+  background: var(--color-white);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-2xl);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.8);
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner-popup img {
+  max-width: 100%;
+  max-height: 80vh;
+  display: block;
+}
+
+.banner-popup-close {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: var(--color-primary);
+  color: var(--color-white);
+  font-weight: 700;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.banner-popup-close:hover {
+  filter: brightness(1.1);
+}
+
+/* Easter Eggs Modal */
+.easterEggs {
+  margin: var(--spacing-sm) 0 18px;
+  display: flex;
+  gap: var(--spacing-sm);
+  justify-content: center;
+  align-items: center;
+}
+
+.easter-thumb {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.45);
+  transition: transform var(--transition-fast), 
+              filter var(--transition-fast);
+}
+
+.easter-thumb:hover { 
+  transform: scale(1.06); 
+  filter: brightness(1.05); 
+}
+
+.easter-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-easter-modal);
+  align-items: center;
+  justify-content: center;
+}
+
+.easter-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+}
+
+.easter-modal-content {
+  position: relative;
+  z-index: calc(var(--z-easter-modal) + 1);
+  max-width: 90vw;
+  max-height: 90vh;
+  padding: var(--spacing-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.easter-modal-content img {
+  max-width: calc(90vw - 48px);
+  max-height: calc(90vh - 48px);
+  display: block;
+  border-radius: var(--spacing-xs);
+  box-shadow: 0 18px 48px rgba(0,0,0,0.6);
+}
+
+.easter-close {
+  position: absolute;
+  top: -18px;
+  right: -18px;
+  background: var(--color-white);
+  border-radius: var(--radius-round);
+  border: none;
+  width: 40px;
+  height: 40px;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+}
+
+@media (max-width: 520px) {
+  .easter-thumb { 
+    width: 48px; 
+    height: 48px; 
+  }
+  .easter-close { 
+    width: 36px; 
+    height: 36px; 
+    font-size: 20px; 
+  }
+}

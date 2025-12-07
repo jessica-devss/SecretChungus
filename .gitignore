@@ -1,0 +1,23 @@
+# OS Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Backup Files
+*.bak
+*_OLD.*
+*_BACKUP.*
+
+# Logs
+*.log
+
+# Optional
+node_modules/
+.env

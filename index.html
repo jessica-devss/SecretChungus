@@ -4,7 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Secret Chungus – Admin</title>
-  <link rel="stylesheet" href="style.css">
+  
+  <!-- CSS Modules -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/modals.css">
+  <link rel="stylesheet" href="css/admin.css">
+  
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
@@ -13,11 +22,11 @@
 
   <div>
     <div>
-      <img class="chungusBanner" src="./images/SecretChungusBanner.png" alt="SECRET CHUNGUS">
+      <img class="chungusBanner" src="./assets/images/ui/SecretChungusBanner.png" alt="SECRET CHUNGUS">
     </div>
     <div class="easterEggs">
-      <img id="egg-cool" class="easter-thumb" src="./images/emoji-cool.jpg" alt="REALLY COOL" data-popup="./images/Sans_overworld.png">
-      <img id="egg-dog" class="easter-thumb" src="./images/fucking%20dog.png" alt="FUCKING DOG" data-popup="./images/fucking%20dog.png">
+      <img id="egg-cool" class="easter-thumb" src="./assets/images/ui/emoji-cool.jpg" alt="REALLY COOL" data-popup="./assets/images/easter-eggs/Sans_overworld.png">
+      <img id="egg-dog" class="easter-thumb" src="./assets/images/easter-eggs/fucking dog.png" alt="FUCKING DOG" data-popup="./assets/images/easter-eggs/fucking dog.png">
     </div>
 
     <section class="mainSection">
@@ -27,7 +36,10 @@
         <p>Essa página é só para você fazer o sorteio e gerar os links de cada participante.</p>
         <p>Depois de sortear, copie o link correspondente e envie para cada pessoa.</p>
 
-        <button id="btn-sortear" style="margin-top: 16px;">Sortear agora</button>
+        <div style="margin-top: 16px; display: flex; gap: 12px;">
+          <button id="btn-sortear">Sortear agora</button>
+          <button id="btn-refazer" style="display: none;">Refazer sorteio</button>
+        </div>
 
         <table class="table-links">
           <thead>
@@ -43,8 +55,8 @@
     </section>
   </div>
 
-  <script src="config.js"></script>
-  <script src="admin.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/admin.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       const thumbs = document.querySelectorAll('.easter-thumb');

@@ -1,0 +1,49 @@
+/* ADMIN PAGE STYLES */
+
+.table-links {
+  width: 100%;
+  border: 1px solid #ddd;
+  margin-top: var(--spacing-lg);
+}
+
+.table-links th,
+.table-links td {
+  border: 1px solid #ddd;
+  padding: var(--spacing-xs);
+  font-size: 14px;
+}
+
+.table-links input {
+  width: 100%;
+  padding: 6px;
+  font-size: 12px;
+}
+
+.link-container {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.link-container input {
+  flex: 1;
+}
+
+.copy-btn {
+  padding: 6px 12px;
+  font-size: 16px;
+  cursor: pointer;
+  border: 1px solid #ddd;
+  background: white;
+  border-radius: 4px;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.copy-btn:hover {
+  background: #f0f0f0;
+}
+
+.copy-btn:active {
+  transform: scale(0.95);
+}

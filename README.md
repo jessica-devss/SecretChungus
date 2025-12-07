@@ -1,213 +1,256 @@
-# Secret Chungus 🎄🐰
+# 🎅 Secret Chungus 🐰
 
-A cursed-but-wholesome Secret Santa web toy starring one (1) very big rabbit.
+Um sistema de amigo secreto (Secret Santa) temático e divertido com animações, easter eggs e uma experiência interativa única!
 
----
-
-## What is this?
-
-Secret Chungus is:
-
-- 10% Secret Santa
-- 90% inside jokes, chaos and questionable design choices
-- 100% static HTML/CSS/JS
-
-You get:
-
-- An **admin page** that shuffles everyone and spits out secret links.
-- A **participant page** that:
-  - confirms the person’s name,
-  - plays a dramatic drum-roll video,
-  - shows a custom Christmas story,
-  - spins a slot machine full of avatars,
-  - reveals their “chungee” with confetti and silly UI.
-
-If this sounds too serious, don’t worry: it absolutely isn’t.
+**✨ Agora Organizado e Otimizado** - Código modular, estrutura limpa, mesma funcionalidade incrível!
 
 ---
 
-## Folder tour (a.k.a. what all these files do)
+## 📖 O que é isso?
 
-- `admin.html`  
-  The cursed control panel. You open this, click a button, and suddenly everyone has a secret link.
+Secret Chungus é:
 
-- `admin.js`  
-  - Asks for a password (`ADMIN_PASSWORD`) via `prompt()` like it’s 2005.  
-  - Shuffles the `PARTICIPANTS` into a **perfect circle**:  
-    `A → B → C → … → A`  
-  - For each person, creates a JSON `{ giverId, receiverId }`, base64-encodes it, and appends it to `participant.html?data=...`.
+- 10% Secret Santa tradicional
+- 90% piadas internas, caos controlado e escolhas de design questionáveis
+- 100% HTML/CSS/JS estático e divertido
 
-- `participant.html`  
-  The “experience”:
-  - Step 1: “are you really you?” + possible jumpscare.  
-  - Step 2: drum-roll YouTube embed.  
-  - Step 3: personal Christmas story.  
-  - Step 4: slot machine reveal + confetti + message + favorite Chungus.
+Você tem:
 
-- `participant.js`  
-  - Decodes the `data` param from the URL.  
-  - Looks up `giver` and `receiver` in `PARTICIPANTS`.  
-  - Fills in name, story, message, images.  
-  - Controls steps, drum-roll timing, slot-machine animation, and confetti.
-
-- `config.js`  
-  The soul of the project. Contains:
-
-  ```js
-  const PARTICIPANTS = [
-    {
-      id,
-      name,
-      message,
-      story,
-      storyImage,
-      favoriteChungus,
-      favoriteChungusImage,
-      avatar
-    },
-    // ...
-  ];
-
-Edit this file to change everything: names, stories, avatars, favorite chunguses, etc.
-
-* `style.css`
-  Makes everything look festive instead of like a debugging prototype.
-
-* `images/`
-  Banners, avatars, balloons, emojis, cursed Morbius assets, etc.
+- Uma **página de admin** (`index.html`) que embaralha todos e gera links secretos
+- Uma **página do participante** (`pages/participant.html`) que:
+  - ✅ Confirma a identidade da pessoa
+  - 🥁 Toca um vídeo dramático de suspense
+  - 📜 Mostra uma história personalizada de Natal
+  - 🎰 Roda uma slot machine com avatares
+  - 🎊 Revela o "chungee" com confetes e UI hilária
 
 ---
 
-## Tiny lore dump 🎅
+## 📁 Estrutura do Projeto
 
-Legend says that once a year, the Secret Chungus awakens, reads `config.js`, and silently judges everyone’s wishlist.
-
-If the array is valid, it forms a perfect giving circle:
-no one gets themselves, everyone is someone’s chungee, and at least one person will absolutely receive something they’re not ready to explain to their family.
-
-Meanwhile, a lonely PNG pufferfish watches the slot machine spins from the `images/` folder, waiting for confetti to rain so it can finally rest until next Christmas.
-
----
-
-## How to run this thing
-
-This is a static site. No build, no backend, just vibes.
-
-### Option 1 – caveman mode
-
-Double-click `admin.html` or `participant.html` and open directly in your browser.
-It usually works, but some browsers get grumpy with local file URLs + YouTube + query params.
-
-### Option 2 – tiny local server (recommended)
-
-From the project folder:
-
-```bash
-# Python 3
-python -m http.server 8000
-
-# then open:
-#   http://localhost:8000/admin.html
-#   http://localhost:8000/participant.html
+```
+SecretChungus/
+├── index.html              # Página de administração (sorteio)
+├── pages/
+│   └── participant.html    # Página do participante
+├── css/                    # 🎨 Estilos modularizados
+│   ├── reset.css          # Reset CSS
+│   ├── variables.css      # Variáveis CSS (cores, tamanhos, etc)
+│   ├── components.css     # Componentes principais
+│   ├── animations.css     # Todas as animações
+│   ├── modals.css         # Modais e overlays
+│   ├── slot-machine.css   # Slot machine de revelação
+│   └── admin.css          # Estilos da página admin
+├── js/                     # ⚙️ JavaScript modularizado (ES6 Modules)
+│   ├── config.js          # ⚡ Configuração dos participantes
+│   ├── admin.js           # Lógica do sorteio
+│   ├── participant.js     # Script principal coordenador
+│   ├── utils.js           # Funções utilitárias
+│   ├── confetti.js        # 🎊 Animação de confete
+│   ├── drumPlayer.js      # 🥁 Player do vídeo de suspense
+│   ├── slotMachine.js     # 🎰 Slot machine de revelação
+│   ├── storyReveal.js     # 📜 Revelação animada das histórias
+│   ├── easterEggs.js      # 🥚 Easter eggs escondidos
+│   └── backgroundMusic.js # 🎵 Música de fundo
+├── assets/
+│   ├── images/
+│   │   ├── ui/            # Imagens de interface
+│   │   ├── avatars/       # Avatares dos participantes
+│   │   └── easter-eggs/   # Imagens dos easter eggs
+│   └── audio/
+│       └── chungusmassong.ogg  # Música natalina
+└── README.md              # Este arquivo
 ```
 
-Or use any static server (`npx serve`, `http-server`, etc.).
+---
+
+## 🚀 Como Usar
+
+### 1. Configurar Participantes
+
+Edite `js/config.js` e adicione os participantes no array `PARTICIPANTS`:
+
+```javascript
+const PARTICIPANTS = [
+  {
+    id: "identificador-unico",              // ID único do participante
+    name: "Nome do Participante",           // Nome exibido
+    message: "Mensagem/desejo",             // Mensagem/wishlist
+    story: "História temática...",          // História de Natal personalizada
+    storyImage: "../assets/images/ui/...", // Imagem da história
+    favoriteChungus: "Descrição",           // Chungus favorito
+    favoriteChungusImage: "../assets/...", // Imagem do chungus favorito
+    avatar: "../assets/images/avatars/..." // Avatar do participante
+  },
+  // ... adicione mais participantes
+];
+```
+
+### 2. Fazer o Sorteio
+
+1. Abra `index.html` no navegador
+2. Insira a senha de administrador (padrão: `chungus2024`)
+3. Clique em **"Sortear agora"**
+4. Copie os links gerados e envie para cada participante
+
+💡 **Dica**: O sorteio cria um círculo perfeito (A → B → C → ... → A) garantindo que todos deem E recebam presentes.
+
+### 3. Experiência do Participante
+
+Cada participante abre seu link único e passa por:
+
+1. **Confirmação de Identidade** - "É você mesmo?"
+   - ✅ Sim → Continua
+   - ❌ Não → JUMPSCARE MORBIUS! 😱
+
+2. **Drum Roll** - Vídeo de suspense do YouTube
+
+3. **História de Natal** - História personalizada com revelação progressiva
+
+4. **Slot Machine** - Animação de revelação do amigo secreto
+
+5. **Detalhes do Chungee** - Avatar, mensagem, chungus favorito, confetes! 🎊
 
 ---
 
-## How to actually use it
+## 🎨 Características
 
-1. **Edit the cast**
-
-   Open `config.js` and tweak `PARTICIPANTS`:
-
-   * `id`: a unique string, used in links.
-   * `name`: what shows up on screen.
-   * `message`: their Christmas message.
-   * `story`: their personal story (can include HTML `<br>` if you want line breaks).
-   * `storyImage`, `favoriteChungusImage`, `avatar`: paths into `images/`.
-
-2. **Run the draw**
-
-   * Open `admin.html`.
-
-   * It will ask for a password. Default in `admin.js` is:
-
-     ```js
-     const ADMIN_PASSWORD = "chungus2024";
-     ```
-
-   * Type it correctly (first try, ideally).
-
-   * Click **“Sortear agora”**.
-
-   * A table appears with:
-
-     * Person’s name.
-     * A secret link with `?data=...`.
-
-3. **Send the links**
-
-   * Copy each link.
-   * DM it to the corresponding participant.
-   * Resist the urge to open other people’s links. (Or don’t. I’m not your boss.)
-
-4. **Participant flow**
-
-   When someone opens their link:
-
-   1. Step 1: “Are you really [name]?”
-
-      * Yes → trust popup → goes to step 2.
-      * No → Morbius jumpscare.
-
-   2. Step 2: drum-roll video plays; after a few seconds, a button appears.
-
-   3. Step 3: their **own** Christmas story and story image.
-
-   4. Step 4: slot machine spins; their assigned chungee is revealed with:
-
-      * avatar,
-      * favorite chungus,
-      * their message,
-      * confetti.
+✨ **Design Responsivo** - Funciona perfeitamente em desktop e mobile  
+📦 **Código Modular** - JavaScript ES6 Modules para manutenção fácil  
+🎭 **Animações Suaves** - Confetes, slot machine, revelação progressiva  
+🥚 **Easter Eggs** - Segredos escondidos por todo o site  
+🎵 **Música de Fundo** - Trilha sonora natalina temática  
+📖 **Histórias Únicas** - Cada participante tem sua história personalizada  
+🎯 **Cursor Customizado** - Cursor temático Big Chungus  
+🎨 **CSS Variables** - Fácil customização de cores e estilos
 
 ---
 
-## Important-but-still-silly notes
+## 🛠️ Tecnologias
 
-* The draw is done entirely in the browser.
-* Links embed `{ giverId, receiverId }` as base64 in the URL.
-* Anyone who knows how `atob` works can decode it.
-* Conclusion: this is for parties, not for nuclear launch codes.
-
-If you don’t want a hard-coded password:
-
-* Change or remove `ADMIN_PASSWORD` in `admin.js`.
-* Or move all of this behind a real backend with proper auth (massive overkill, but possible).
+- **HTML5** - Estrutura semântica
+- **CSS3** - CSS Variables, Flexbox, Animations
+- **JavaScript ES6+** - Modules, Classes, Async/Await
+- **YouTube IFrame API** - Para vídeo de suspense
+- **Canvas API** - Para animação de confetes
+- **IntersectionObserver API** - Para revelação progressiva
 
 ---
 
-## Things you *could* add (if you’re too invested now)
+## ⚙️ Configuração Avançada
 
-* A “sent” checkbox on the admin table to track who already got their link.
-* Another reveal mode (e.g. fade-in grid, card flip, etc.).
-* Extra steps like:
+### Alterar Senha de Admin
 
-  * a quiz about your chungee,
-  * bonus memes unlocked after the reveal,
-  * a “reroll” button that **does nothing** but panic people.
+Em `js/admin.js`:
+
+```javascript
+const ADMIN_PASSWORD = "sua-senha-aqui";
+```
+
+### Personalizar Cores e Estilos
+
+Em `css/variables.css`:
+
+```css
+:root {
+  --color-primary: #b0183c;     /* Cor primária */
+  --color-bg-main: #12010a;     /* Fundo principal */
+  --font-main: "Work Sans", sans-serif;
+  /* ... mais variáveis */
+}
+```
+
+### Adicionar Novas Imagens
+
+Coloque as imagens nas pastas apropriadas:
+
+- **Avatares**: `assets/images/avatars/`
+- **Imagens de UI**: `assets/images/ui/`
+- **Easter Eggs**: `assets/images/easter-eggs/`
 
 ---
 
-## Final disclaimer
+## 🎯 Easter Eggs
 
-This project runs on:
+🔍 **Descubra os segredos!**
 
-* HTML
-* CSS
-* Vanilla JS
-* Pure holiday chaos
+- 🖼️ Clique no **banner superior** 3 vezes
+- 👀 Clique nos **ícones de emoji** acima do banner
+- 😎 Clique nos **emojis "cool"** na seção final
+- 🎬 Veja a **animação especial** ao rejeitar sua identidade
+- ❄️ Observe os **flocos de neve** caindo
 
-Use it to spread joy, not to store anything sensitive.
-May your draws be fair, your links unspoiled, and your Chungus extremely large.
+---
+
+## 📚 Estrutura de Código
+
+### Módulos JavaScript
+
+| Módulo | Responsabilidade |
+|--------|-----------------|
+| `config.js` | Dados dos participantes |
+| `admin.js` | Lógica de sorteio |
+| `participant.js` | Coordenador principal |
+| `utils.js` | Funções auxiliares |
+| `confetti.js` | Animação de confetes |
+| `drumPlayer.js` | YouTube player |
+| `slotMachine.js` | Slot machine |
+| `storyReveal.js` | Revelação de histórias |
+| `easterEggs.js` | Easter eggs |
+| `backgroundMusic.js` | Áudio de fundo |
+
+### Módulos CSS
+
+| Módulo | Conteúdo |
+|--------|----------|
+| `reset.css` | Reset de estilos padrão |
+| `variables.css` | Variáveis CSS globais |
+| `components.css` | Componentes reutilizáveis |
+| `animations.css` | Keyframes e animações |
+| `modals.css` | Modais e overlays |
+| `slot-machine.css` | Estilos da slot machine |
+| `admin.css` | Estilos da página admin |
+
+---
+
+## 🐛 Troubleshooting
+
+**O sorteio não funciona?**
+- ✅ Verifique se inseriu a senha correta
+- ✅ Verifique se há pelo menos 2 participantes em `config.js`
+
+**As imagens não aparecem?**
+- ✅ Verifique os caminhos relativos nos arquivos
+- ✅ Confirme que as imagens estão nas pastas corretas em `assets/`
+
+**A música não toca?**
+- ✅ Alguns navegadores bloqueiam autoplay - clique na página primeiro
+- ✅ Verifique se o arquivo `chungusmassong.ogg` está em `assets/audio/`
+
+**O vídeo não carrega?**
+- ✅ Verifique sua conexão com a internet
+- ✅ O YouTube deve estar acessível
+
+---
+
+## 📝 Licença
+
+Este é um projeto pessoal de amigo secreto. Use e modifique como quiser! 🎄
+
+---
+
+## 🎉 Créditos
+
+Criado com amor (e muito café) para o **Secret Chungus 2024** 🐰✨
+
+**Melhorias na Organização:**
+- ✅ Código modularizado (ES6 Modules)
+- ✅ CSS separado por responsabilidade
+- ✅ Estrutura de pastas clara
+- ✅ Assets organizados por tipo
+- ✅ Zero funcionalidade perdida
+- ✅ 100% mais manutenível!
+
+---
+
+🎅 **Feliz Natal e bom Secret Chungus!** 🐰🎄

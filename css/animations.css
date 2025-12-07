@@ -1,0 +1,140 @@
+/* ANIMATIONS */
+
+/* Fire Text Animation */
+.fire, .burn {
+  color: #000;
+  font-family: var(--font-fire);
+  font-size: 26px;
+  text-transform: lowercase;
+  vertical-align: middle;
+  letter-spacing: .2em;
+}
+
+.fire {
+  animation: animation 1s ease-in-out infinite alternate;
+}
+
+.burn {
+  animation: animation .65s ease-in-out infinite alternate;
+}
+
+@keyframes animation {
+  0% {
+    text-shadow: 0 0 12px #fefcc9,
+      0px 10px 16px #feec85,
+      0px -14px 22px #ffae34,
+      0px -22px 32px #ec760c,
+      0px -30px 40px #cd4606,
+      8px -18px 24px #ffae34,
+      -8px -18px 24px #ec760c,
+      8px 0px 16px #ec760c,
+      -8px 0px 16px #cd4606,
+      6px 12px 18px #973716,
+      -6px 12px 18px #451b0e;
+  }
+  100% {
+    text-shadow: 0 0 12px #fefcc9,
+      0px 10px 16px #fefcc9,
+      0px -14px 22px #feec85,
+      0px -22px 32px #ffae34,
+      0px -30px 40px #ec760c,
+      8px -18px 24px #ffae34,
+      -8px -18px 24px #ec760c,
+      8px 0px 16px #ffae34,
+      -8px 0px 16px #ec760c,
+      6px 14px 20px #cd4606,
+      -6px 14px 20px  #973716;
+  }
+}
+
+/* Amazing Text Gradient Animation */
+@keyframes amazingMove {
+  0%, 100% {
+    background-position: 200% 0%;
+  }
+  50% {
+    background-position: 0% 200%;
+  }
+}
+
+/* Star Animation (Celebration Box) */
+@keyframes star {
+  0% {
+    transform: scale(0);
+    animation-timing-function: cubic-bezier(.74,1.72,.57,1.01);
+  }
+  10% {
+    transform: scale(1);
+  }
+  65% {
+    transform: translateY(0px) scale(1);
+  }
+  75% {
+    transform: translateY(50px) scale(0);
+  }
+  100% {
+    transform: translateY(0px) scale(0);
+  }
+}
+
+/* Woah.css - Simple Entrance Animation */
+.woah {
+  animation-fill-mode: both;
+}
+
+.woah.infinite {
+  animation-iteration-count: infinite;
+}
+
+@keyframes simpleEntrance {
+  0% {
+    opacity: 0%;
+    transform: translate3d(-2000px,500px,0) scale(10);
+  }
+  1% {
+    opacity: 100%;
+  }
+  40% {
+    transform: translate3d(2000px,0px,0) scale(5);
+  }
+  50% {
+    transform: translate3d(-2000px,-100px,0) scale(3);
+  }
+  60% {
+    transform: translate3d(2000px,100px,0) scale(2);
+  }
+  70% {
+    transform: translate3d(-2000px,400px,0) scale(.1);
+  }
+  75% {
+    transform: translate3d(0px,0px,0) scale(.1);
+  }
+  80% {
+    transform: rotate(360deg) translateX(150px) rotate(-360deg);
+  }
+}
+
+.simpleEntrance {
+  animation-timing-function: linear;
+  transform-origin: bottom center;
+  animation-name: simpleEntrance;
+  animation-duration: 4.5s;
+}
+
+/* Snow Fall Animation */
+.snowflake {
+  position: fixed;
+  top: -10px;
+  color: var(--color-white);
+  font-size: 10px;
+  opacity: 0.7;
+  animation: snow-fall linear infinite;
+  pointer-events: none;
+  z-index: var(--z-snow);
+}
+
+@keyframes snow-fall {
+  to {
+    transform: translateY(100vh);
+  }
+}
