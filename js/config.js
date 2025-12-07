@@ -269,7 +269,7 @@ Everyone cheered. The camera drones spun. Snow—real or not—drifted through t
 And as the night went on, the strange plaza wrapped itself around them like a glitchy, cozy blanket—until all anyone could feel was warmth, laughter, and that quiet, shining certainty that this Christmas, at least, they weren’t alone.
 
 The party lights twinkled, the cat snored, Easy Pete didn’t question anything, Deadzonee’s scuffed stream chat spammed hearts—and the Secret Chungus Christmas carried on, joyfully, deep inside a place that technically didn’t exist, but absolutely did.`,
-    storyImage: "../assets/images/ui/dubosstur.png",
+    storyImage: "../assets/images/ui/dubosstur.jpg",
     favoriteChungus: "png chungus",
     favoriteChungusImage: "../assets/images/avatars/chungus png.jpg",
     avatar: "../assets/images/avatars/Dubo.png"
